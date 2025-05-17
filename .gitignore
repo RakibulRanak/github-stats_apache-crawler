@@ -1,8 +1,4 @@
 .env
-<<<<<<< HEAD
 __pycache__/
 clones/
 .json
-=======
-__pycache__/
->>>>>>> main
