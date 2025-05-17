@@ -21,7 +21,9 @@ closed_issues_url = https://api.github.com/repos/{user}/{repo}/issues?state=clos
 
 environments_url = https://api.github.com/repos/{user}/{repo}/environments
 
-None of the API provides metaData of the count, so we can simply get the lenght of the response. 
+None of the API provides metaData of the count. We iterate over the paginatated api untill there is no data and increment the count. 
+
+Btw, there is an efficient way to do this. Response provide a Link header with the last page link. We could extract the page number from the header with a regex. And directly visit the last page to get the count of response of the last page. For all the other page, we could simply sum up as `count += (total page - 1) * page size` without visiting. 
 
 
 For details : https://docs.github.com/en/rest/
