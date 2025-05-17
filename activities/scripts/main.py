@@ -42,10 +42,10 @@ def main():
         'repositories' : repo_stats.repositories
     }
 
-    with open('repo_stats_summary.json', 'w') as f:
+    with open(f'{USER}_stats_summary.json', 'w') as f:
         json.dump(final_stats_summary, f)
 
-    with open('repo_stats_detailed.json', 'w') as f:
+    with open(f'{USER}_stats_detailed.json', 'w') as f:
         json.dump(final_stats_detailed, f)
 
 if __name__ == "__main__":
