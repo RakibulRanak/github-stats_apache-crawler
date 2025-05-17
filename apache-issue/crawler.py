@@ -85,10 +85,6 @@ def fetch_issue_comments(issue_url):
         comments.append(comment)
     return comments
 
-issue_no = 1
-total_issue = 22079
-issues = []
-
 issue_no = ISSUE_NO_START
 issues = []
 
