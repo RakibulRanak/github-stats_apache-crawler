@@ -1,0 +1,18 @@
+{
+    "Python": {
+        "total": 49790,
+        "median": 0.0
+    },
+    "JavaScript": {
+        "total": 6985,
+        "median": 0.0
+    },
+    "TypeScript": {
+        "total": 2980,
+        "median": 0.0
+    },
+    "Java": {
+        "total": 1608,
+        "median": 0.0
+    }
+}
