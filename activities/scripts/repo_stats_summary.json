@@ -1,0 +1,24 @@
+{
+    "user": "rakibulranak",
+    "stats": {
+        "total_repos": 30,
+        "total_stargazers_count": 19,
+        "median_stargazers_count": 0.63,
+        "total_forks_count": 5,
+        "median_forks_count": 0.17,
+        "total_commits_count": 15410,
+        "median_commits_count": 513.67,
+        "total_contributors_count": 1262,
+        "median_contributors_count": 42.07,
+        "total_branches_count": 55,
+        "median_branches_count": 1.83,
+        "total_tags_count": 13,
+        "median_tags_count": 0.43,
+        "total_releases_count": 6,
+        "median_releases_count": 0.2,
+        "total_closed_issues_count": 0,
+        "median_issues_count": 0.0,
+        "total_environments_count": 0,
+        "median_environments_count": 0.0
+    }
+}
