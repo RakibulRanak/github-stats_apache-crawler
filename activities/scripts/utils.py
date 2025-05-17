@@ -1,5 +1,6 @@
 from config import BASE_URL, BEARER_TOKEN
 import requests
+import statistics
 
 
 class Repository:
@@ -92,56 +93,44 @@ class RepostioyStats:
         self.total_repos = len(repositories)
         self.user = user
 
-        self.total_stargazers_count = sum([repo.get('stargazers_count') for repo in repositories])
-        self.median_stargazers_count = self.__get_median(self.total_stargazers_count)
+        self.stargazers_counts = [repo.get('stargazers_count', 0) for repo in repositories]
+        self.forks_counts = [repo.get('forks_count', 0) for repo in repositories]
+        self.commits_counts = [repo.get('commits_count', 0) for repo in repositories]
+        self.contributors_counts = [repo.get('contributors_count', 0) for repo in repositories]
+        self.branches_counts = [repo.get('branches_count', 0) for repo in repositories]
+        self.tags_counts = [repo.get('tags_count', 0) for repo in repositories]
+        self.releases_counts = [repo.get('releases_count', 0) for repo in repositories]
+        self.closed_issues_counts = [repo.get('closed_issues_count', 0) for repo in repositories]
+        self.environments_counts = [repo.get('environments_count', 0) for repo in repositories]
         
-        self.total_forks_count = sum([repo.get('forks_count') for repo in repositories])
-        self.median_forks_count = self.__get_median(self.total_forks_count)
-        
-        self.total_commits_count = sum([repo.get('commits_count') for repo in repositories])
-        self.median_commits_count = self.__get_median(self.total_commits_count)
 
-        self.total_contributors_count = sum([repo.get('contributors_count') for repo in repositories])
-        self.median_contributors_count = self.__get_median(self.total_contributors_count)
-
-        self.total_branches_count = sum([repo.get('branches_count') for repo in repositories])
-        self.median_branches_count = self.__get_median(self.total_branches_count)
-
-        self.total_tags_count = sum([repo.get('tags_count') for repo in repositories])
-        self.median_tags_count = self.__get_median(self.total_tags_count)
-
-        self.total_releases_count = sum([repo.get('releases_count') for repo in repositories])
-        self.median_releases_count = self.__get_median(self.total_releases_count)
-
-        self.total_closed_issues_count = sum([repo.get('closed_issues_count') for repo in repositories])
-        self.median_closed_issues_count = self.__get_median(self.total_closed_issues_count)
-        
-        self.total_enviroments_count = sum([repo.get('environments_count') for repo in repositories])
-        self.median_enviroments_count = self.__get_median(self.total_enviroments_count)
+    def __get_median(self, counts):
+        return statistics.median(counts) if counts else 0
     
+    def __get_total(self, counts):
+        return sum(counts)
 
-    def __get_median(self, value):
-        return round(value / self.total_repos, 2)
+    
     
     def to_dict(self):
         return {
             'total_repos': self.total_repos,
-            'total_stargazers_count': self.total_stargazers_count,
-            'median_stargazers_count': self.median_stargazers_count,
-            'total_forks_count': self.total_forks_count,
-            'median_forks_count': self.median_forks_count,
-            'total_commits_count': self.total_commits_count,
-            'median_commits_count': self.median_commits_count,
-            'total_contributors_count': self.total_contributors_count,
-            'median_contributors_count': self.median_contributors_count,
-            'total_branches_count': self.total_branches_count,
-            'median_branches_count': self.median_branches_count,
-            'total_tags_count': self.total_tags_count,
-            'median_tags_count': self.median_tags_count,
-            'total_releases_count': self.total_releases_count,
-            'median_releases_count': self.median_releases_count,
-            'total_closed_issues_count': self.total_closed_issues_count,
-            'median_issues_count': self.median_closed_issues_count,
-            'total_environments_count' : self.total_enviroments_count,
-            'median_environments_count' : self.median_enviroments_count 
+            'total_stargazers_count': self.__get_total(self.stargazers_counts),
+            'median_stargazers_count': self.__get_median(self.stargazers_counts),
+            'total_forks_count': self.__get_total(self.forks_counts),
+            'median_forks_count': self.__get_median(self.forks_counts),
+            'total_commits_count': self.__get_total(self.commits_counts),
+            'median_commits_count': self.__get_median(self.commits_counts),
+            'total_contributors_count': self.__get_total(self.contributors_counts),
+            'median_contributors_count': self.__get_median(self.contributors_counts),
+            'total_branches_count': self.__get_total(self.branches_counts),
+            'median_branches_count': self.__get_median(self.branches_counts),
+            'total_tags_count': self.__get_total(self.tags_counts),
+            'median_tags_count': self.__get_median(self.tags_counts),
+            'total_releases_count': self.__get_total(self.releases_counts),
+            'median_releases_count': self.__get_median(self.releases_counts),
+            'total_closed_issues_count': self.__get_median(self.closed_issues_counts),
+            'median_issues_count': self.__get_median(self.closed_issues_counts),
+            'total_environments_count' : self.__get_total(self.environments_counts),
+            'median_environments_count' : self.__get_median(self.environments_counts) 
         }

@@ -47,6 +47,8 @@ def main():
 
     with open(f'{USER}_stats_detailed.json', 'w') as f:
         json.dump(final_stats_detailed, f)
+        
+    print(f'{USER}_stats_detailed.json.json created successfully' )
 
 if __name__ == "__main__":
     main()

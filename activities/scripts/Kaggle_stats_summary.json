@@ -1,0 +1,24 @@
+{
+    "user": "Kaggle",
+    "stats": {
+        "total_repos": 12,
+        "total_stargazers_count": 10472,
+        "median_stargazers_count": 93.5,
+        "total_forks_count": 2747,
+        "median_forks_count": 33.5,
+        "total_commits_count": 7162,
+        "median_commits_count": 235.5,
+        "total_contributors_count": 306,
+        "median_contributors_count": 13.5,
+        "total_branches_count": 233,
+        "median_branches_count": 6.0,
+        "total_tags_count": 436,
+        "median_tags_count": 1.0,
+        "total_releases_count": 316,
+        "median_releases_count": 0.0,
+        "total_closed_issues_count": 7.0,
+        "median_issues_count": 7.0,
+        "total_environments_count": 0,
+        "median_environments_count": 0.0
+    }
+}
