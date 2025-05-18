@@ -1,4 +1,4 @@
-# Generate statistics from all the gitHub repositories of an User. 
+# Generate activity statistics from all the gitHub repositories of an User. 
 
 The stats includes - Total and median number of commits, stars, contributors, branches, tags, forks, releases, closed issues, and environments. GitHub API is used to perform this task. 
 

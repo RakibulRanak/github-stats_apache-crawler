@@ -102,7 +102,7 @@ for lang in languages:
         "median" : median
     }
 
-with open(f'{USER}_language_summary.json', 'w') as f:
+with open(f'{os.path.dirname(__file__)}/{USER}_language_summary.json', 'w') as f:
     json.dump(total_summary, f)
 
 print(f'{USER}_language_summary.json created successfully' )
