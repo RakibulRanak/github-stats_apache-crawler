@@ -1,13 +1,9 @@
-from dotenv import load_dotenv
 import requests
 import json
 from tqdm import tqdm
 from utils import Repository, RepostioyStats
 from config import BASE_URL, BEARER_TOKEN
-
-
-load_dotenv('../../.env')
-
+import os
 
 def main():
     USER = input('Enter github username: ')
@@ -42,13 +38,13 @@ def main():
         'repositories' : repo_stats.repositories
     }
 
-    with open(f'{USER}_stats_summary.json', 'w') as f:
+    with open(f'{os.path.dirname(__file__)}/{USER}_activity_summary.json', 'w') as f:
         json.dump(final_stats_summary, f)
 
-    with open(f'{USER}_stats_detailed.json', 'w') as f:
+    with open(f'{os.path.dirname(__file__)}/{USER}_activity_detailed.json', 'w') as f:
         json.dump(final_stats_detailed, f)
         
-    print(f'{USER}_stats_detailed.json.json created successfully' )
+    print(f'{USER}_activity_detailed.json created successfully' )
 
 if __name__ == "__main__":
     main()

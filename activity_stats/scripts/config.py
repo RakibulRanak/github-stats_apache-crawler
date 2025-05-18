@@ -1,7 +1,7 @@
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import os
 
-load_dotenv('../../.env')
+load_dotenv(find_dotenv())
 
 BEARER_TOKEN = os.getenv('GITHUB_TOKEN')
 if BEARER_TOKEN :
