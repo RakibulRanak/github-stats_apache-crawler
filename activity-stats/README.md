@@ -41,7 +41,7 @@ environments = https://api.github.com/repos/{user}/{repo}/environments
 
 None of the API provides metaData of the count. We iterate over the paginatated api untill there is no data and increment the count. 
 
-Btw, there is an efficient way to do this. Response provide a Link header with the last page link. We could extract the page number from the header with a regex. And directly visit the last page to get the count of response of the last page. For all the other page, we could simply sum up as `count += (total page - 1) * page size` without visiting. 
+Btw, there is an efficient way to do this. Response provide a Link header with the last page link. We could extract the page number from the header with a regex. And directly visit the last page to get the count of response of the last page. For all the other page, we could simply sum up as `count += (total page - 1) * page size` without visiting. But for the issues API, we are unable to skip pages like that. GitHub’s Issues API returns both issues and pull requests. Only way to filter out the pull requests from the actual issues is to go through every  item in the response and discard it if it contains `pull_request` object inside it. 
 
 
 For details : https://docs.github.com/en/rest/
