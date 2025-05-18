@@ -20,7 +20,7 @@ The stats includes - total and median number of source code lines per programmin
 
 - Additional : Executing all codeblocks of `fetch-languages.ipynb` would do the same. Here we need to edit the variables, as there will be no prompt 
 
-## language supports
+## Language supports
 
 Currently, Supported languages are :
 

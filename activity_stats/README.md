@@ -1,8 +1,8 @@
-# Generate activity statistics from all the gitHub repositories of an User. 
+# Generate activity statistics from all the github repositories of an user. 
 
-The stats includes - Total and median number of commits, stars, contributors, branches, tags, forks, releases, closed issues, and environments. GitHub API is used to perform this task. 
+The stats includes - Total and median number of commits, stars, contributors, branches, tags, forks, releases, closed issues, and environments. Github API is used to perform this task. 
 
-## Instruction to Run the project
+## Instruction to run the project
 
 - Install pip (if not already installed)
 - Install the following libraries : 
@@ -15,7 +15,7 @@ The stats includes - Total and median number of commits, stars, contributors, br
 - Additional : Executing all codeblocks of `fetch-activities.ipynb` would do the same. Here we need to edit the variables, as there will be no prompt
 
 
-## Basic Overview of the Workflow
+## Basic overview of the workflow
 For our use case we need to fetch all repositories of an User. Then iterate over repository and find the detailed metrics of that repository.
 
 ### Repositories of an user
