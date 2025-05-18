@@ -1,0 +1,49 @@
+[
+  {
+    "type": "Bug",
+    "assignee": "Claus Ibsen",
+    "createdAt": "14/Dec/16 14:42",
+    "created_at_epoch": 1481726520,
+    "description": "Assume I have rest pathrest(\"/test\").get().type(ClassA.class).to(\"direct:someRoute\");rest(\"/testSub\").get().type(ClassB.class).to(\"direct:someOtherRoute\");And in the type ClassA contains a reference to ClassB.Within the Swagger Doc the path for ClassA renders as expected:/test:\n    get:\n      responses:\n        200:\n          schema:\n            $ref:'#/definitions/ClassA'However ClassB gets a string parameter scheme/testSub:\n    get:\n      responses:\n        200:\n          schema:\n             type :'string'format :'com.ClassB'However I'd expect it to be:/testSub:\n    get:\n      responses:\n        200:\n          schema:\n            $ref:'#/definitions/ClassB'",
+    "comments": [
+      {
+        "author": "ASF GitHub Bot",
+        "created_at": "14/Dec/16 14:55",
+        "created_at_epoch": 1481727300,
+        "text": "GitHub user bobpaulin opened a pull request:https://github.com/apache/camel/pull/1348CAMEL-10597- Allow addition of x-className to empty VendorExtensionsYou can merge this pull request into a Git repository by running:$ git pullhttps://github.com/bobpaulin/camelCAMEL-10597Alternatively you can review and apply these changes as the patch at:https://github.com/apache/camel/pull/1348.patchTo close this pull request, make a commit to your master/trunk branchwith (at least) the following in the commit message:This closes #1348"
+      },
+      {
+        "author": "Bob Paulin",
+        "created_at": "14/Dec/16 14:56",
+        "created_at_epoch": 1481727360,
+        "text": "PR includedhttps://github.com/apache/camel/pull/1348"
+      },
+      {
+        "author": "Claus Ibsen",
+        "created_at": "14/Dec/16 15:31",
+        "created_at_epoch": 1481729460,
+        "text": "Thanks for the PR"
+      },
+      {
+        "author": "ASF GitHub Bot",
+        "created_at": "14/Dec/16 15:34",
+        "created_at_epoch": 1481729640,
+        "text": "Github user bobpaulin closed the pull request at:https://github.com/apache/camel/pull/1348"
+      },
+      {
+        "author": "Andrea Cosentino",
+        "created_at": "15/Dec/16 14:05",
+        "created_at_epoch": 1481810700,
+        "text": "2.17.x is affected toodavsclaus"
+      },
+      {
+        "author": "Claus Ibsen",
+        "created_at": "15/Dec/16 14:26",
+        "created_at_epoch": 1481811960,
+        "text": "Thanks its backported now"
+      }
+    ],
+    "id": 10597,
+    "url": "https://issues.apache.org/jira/browse/CAMEL-10597"
+  }
+]

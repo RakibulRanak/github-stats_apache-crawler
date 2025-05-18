@@ -2,6 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone
 from selenium import webdriver
+import csv
+import json
+
 
 DEFAULT_APACHE_PROJECT_URL = 'https://issues.apache.org/jira/browse/CAMEL'
 
@@ -104,20 +107,22 @@ while issue_no <= ISSUE_NO_END:
 
 import json
 
-with open('camel_issues.json', 'w', encoding='utf-8') as f:
-    json.dump(issues, f, indent=2, ensure_ascii=False)
-print(f"camel_issues.json created successfully")
+file_name = f'camel_issues-[{ISSUE_NO_START}-{ISSUE_NO_END}]'
 
-import csv
-import json
+if SPECIFIC_ISSUE_NO:
+    file_name = f'camel_issue-{SPECIFIC_ISSUE_NO}'
+
+with open(f'{file_name}.json', 'w', encoding='utf-8') as f:
+    json.dump(issues, f, indent=2, ensure_ascii=False)
+print(f"{file_name}.json created successfully")
 
 fieldnames = list(issues[0].keys()) 
 
-with open('camel_issues.csv', 'w', encoding='utf-8') as f:
+with open(f'{file_name}.csv', 'w', encoding='utf-8') as f:
     writer = csv.DictWriter(f, fieldnames=fieldnames)
     writer.writeheader()
     for issue in issues:
         row = issue.copy() 
         row['comments'] = json.dumps(row['comments'], ensure_ascii=False)
         writer.writerow(row)
-print(f"camel_issues.csv created successfully")
+print(f"{file_name}.csv created successfully")
