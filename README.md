@@ -6,4 +6,3 @@ These repository contains three different projects. Every project has its own do
 
 Each project is developed in an IPython notebook, and a corresponding .py script is also created for ease of access and execution.
 
-**Please refer to the `develop` branch for the complete commit history.**
