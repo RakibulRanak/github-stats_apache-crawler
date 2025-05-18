@@ -7,6 +7,7 @@ from tqdm import tqdm
 from selenium import webdriver
 import json
 import statistics
+import time
 
 USER = input("Enter github username: ")
 org_input = input("Is the user an organization? (yes / no): ")
@@ -21,21 +22,26 @@ def get_repo_names(page, user, is_org = False):
     if is_org:
         driver = webdriver.Chrome()
         driver.get(url)
+        time.sleep(0.5)
         html = driver.page_source
         driver.quit()
         soup = BeautifulSoup(html, 'html.parser')
-        repo_elements = soup.find_all('h4', class_=lambda c: c and 'Title-module__heading' in c) 
-        
+        repo_elements = soup.find_all('h4', class_=lambda c: c and 'Title-module__heading') 
+
         for element in repo_elements:
-            name = element.find('a').text.strip()
-            repo_names.append(name)
+            name_tag = element.find('a')
+            name = name_tag.text.strip() if name_tag else None
+            if name:
+                repo_names.append(name)
     else :
         res = requests.get(url)
         soup = BeautifulSoup(res.text, 'html.parser')
         repo_elements = soup.find_all('h3', {'class': 'wb-break-all'})
         for element in repo_elements:
-            name = element.find('a').text.strip()
-            repo_names.append(name)
+            name_tag = element.find('a')
+            name = name_tag.text.strip() if name_tag else None
+            if name:
+                repo_names.append(name)
     return repo_names
 
 
@@ -53,7 +59,7 @@ while True:
         repo_urls.append(repo_url)
     page +=1
     
-print(repo_names)
+print(f'Total repositories to clone : {len(repo_names)}')
 
 dir_path = f'clones/{USER}'
 os.makedirs(dir_path, exist_ok=True)
@@ -62,7 +68,7 @@ df = pd.DataFrame({
     'name' : repo_names,
     'url' : repo_urls
 })
-df.to_csv(f'{dir_path}/repo_urls.csv', index=False)
+df.to_csv(f'{dir_path}/{USER}_urls.csv', index=False)
 
 for url in tqdm(repo_urls):
     subprocess.run(['git', 'clone', url], cwd=dir_path)

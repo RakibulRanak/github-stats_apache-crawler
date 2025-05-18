@@ -1,18 +1,42 @@
 {
     "Python": {
-        "total": 49790,
-        "median": 0.0
+        "total": 70127,
+        "median": 1718.5
     },
     "JavaScript": {
         "total": 6985,
+        "median": 0.0
+    },
+    "Java": {
+        "total": 1608,
         "median": 0.0
     },
     "TypeScript": {
         "total": 2980,
         "median": 0.0
     },
-    "Java": {
-        "total": 1608,
+    "C#": {
+        "total": 0,
         "median": 0.0
+    },
+    "C++": {
+        "total": 0,
+        "median": 0.0
+    },
+    "Go": {
+        "total": 0,
+        "median": 0.0
+    },
+    "PHP": {
+        "total": 0,
+        "median": 0.0
+    },
+    "Ruby": {
+        "total": 0,
+        "median": 0.0
+    },
+    "Bourne Shell": {
+        "total": 1755,
+        "median": 5.0
     }
 }
